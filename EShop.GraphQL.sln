@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.GraphQL.Api", "EShop.GraphQL.Api\EShop.GraphQL.Api.csproj", "{869FB0B6-8042-4285-9677-213C135A71D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.GraphQL.DataAccess", "EShop.GraphQL.DataAccess\EShop.GraphQL.DataAccess.csproj", "{2F133E5F-3F91-462A-960B-8E0428C53705}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{869FB0B6-8042-4285-9677-213C135A71D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869FB0B6-8042-4285-9677-213C135A71D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869FB0B6-8042-4285-9677-213C135A71D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869FB0B6-8042-4285-9677-213C135A71D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F133E5F-3F91-462A-960B-8E0428C53705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F133E5F-3F91-462A-960B-8E0428C53705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F133E5F-3F91-462A-960B-8E0428C53705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F133E5F-3F91-462A-960B-8E0428C53705}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB707158-FCF5-4BE2-9C7D-9BAF2F68C6D2}
+	EndGlobalSection
+EndGlobal
