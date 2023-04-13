@@ -8,9 +8,11 @@ namespace EShop.GraphQL.DataAccess.GraphQL;
 [ExtendObjectType("Query")]
 public class ProductQuery
 {
-	[UseProjection]
-	[UseFiltering]
-	[UseSorting]
-	public IQueryable<Product> GetProducts([Service] AppDbContext context) =>
-		context.Product;
+    //[UsePaging(IncludeTotalCount = true, RequirePagingBoundaries = true)]
+    [UsePaging(IncludeTotalCount = true)]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IQueryable<Product> GetProducts([Service] AppDbContext context) =>
+        context.Product;
 }
