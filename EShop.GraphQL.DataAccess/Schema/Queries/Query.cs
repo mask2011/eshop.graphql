@@ -5,7 +5,7 @@ using HotChocolate.Types;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EShop.GraphQL.DataAccess.GraphQL;
+namespace EShop.GraphQL.DataAccess.Schema.Queries;
 
 public class Query
 {
@@ -16,8 +16,10 @@ public class Query
     public IQueryable<Customer> GetCustomers([Service] AppDbContext context) =>
         context.Customer;
 
+    [UseFirstOrDefault]
     [UseProjection]
     [UseFiltering]
+    [UseSorting]
     public Customer GetCustomerById([Service] AppDbContext context, Guid id) =>
         context.Customer
         .Include(c => c.Address)

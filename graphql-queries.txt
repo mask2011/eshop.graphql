@@ -1,0 +1,203 @@
+#### products with paging 
+query {
+  products(last: 10, before: "MjU=") {
+    edges{
+      node {
+        name,
+        price
+      }
+      cursor
+    }
+    pageInfo {
+      hasNextPage,
+      hasPreviousPage,
+      startCursor,
+      endCursor
+    }
+    totalCount
+  }
+}
+
+
+#### mutation delete product
+mutation {
+  deleteProduct(
+    id: "a5541e6c-8867-4f8b-b682-838b91a7e768"
+  ) 
+}
+
+
+#### customer by id with filter
+query
+{
+  customerById(
+    id: "009BCAC9-F8E3-4A53-A3E1-272714864459", 
+    where: {
+       orders : {
+         some: {
+          sum: {
+            eq: 4650.62
+          }
+         }
+       }  
+    }) 
+    {
+    firstName,
+    lastName,
+    orders {
+      sum
+    }
+  }
+}
+
+
+
+#### query customers with sorting, filter, paging and sorting in nested orders
+query {
+  customers(
+    first: 10,
+    order: [{ address: { street: ASC } }]
+    where: {
+      orders: {
+        some: {
+          sum: {
+            eq: 4650.62
+          }
+        }
+      }
+    }) {
+    edges {
+      node {
+        id,
+        firstName,
+        lastName,
+        address {
+          street
+        },
+        orders(order: {address : {street:ASC}}) {
+          sum,
+          address {
+            street
+          }
+          orderItems {
+            product {
+              name
+            }
+          }
+        }
+      }
+    }
+     pageInfo {
+      hasNextPage,
+      hasPreviousPage,
+      startCursor,
+      endCursor
+    }
+    totalCount
+  }
+}
+
+
+
+#### products with paging
+{
+  products(first: 30) {
+    edges {
+     node {
+       name,
+       price,
+       description
+     }
+    }
+    totalCount
+  }
+}
+
+
+
+#### orders with filter, sorting and sorting in orderItems
+query {
+  orders(
+    where: {
+      customer: {
+        lastName: {
+          contains: "W"
+        }
+      }
+    },
+    order: {
+      sum: DESC
+    }
+  ) {
+    pageInfo {
+      hasNextPage,
+      hasPreviousPage,
+      startCursor,
+      endCursor
+    }
+    totalCount
+    edges {
+      node {
+        sum,
+        address {
+          street,
+          number
+        }
+        orderItems(order: { product: { name: DESC}}) {
+          product {
+            name,
+            price
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+#### mutation create order
+mutation {
+    createOrder(
+        input: { 
+          addressId: "E895993A-03D7-49A9-BD04-99E0E11C7B1A", 
+          customerId: "009BCAC9-F8E3-4A53-A3E1-272714864459",
+          products: [ 
+            { id: "E4B5B8F2-3115-4286-9D73-457F05195F8E", price: 876.24 }, 
+            { id: "DADC03DB-D0AF-4BB4-A9D0-C8BB182DB07E", price: 591.06 }
+          ]
+    }) {
+      id
+    }
+}
+
+
+#### order by id and sorting in orderItems
+query {
+   orderById(id: "333e2842-b493-4633-b92a-ce394411f383") {
+     sum,
+     orderItems(order: { product: { name: ASC } }) {
+       product{
+        name
+       }
+     }
+   }
+}
+
+
+
+#### orders with sorting in orderItems
+query {
+  orders {
+    edges {
+      node {
+        sum
+        orderItems(order: { product: { name: DESC } }) {
+          product {
+            name
+          }
+        }
+      }
+    }
+  }
+}
